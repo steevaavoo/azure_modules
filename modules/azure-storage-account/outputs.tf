@@ -17,3 +17,8 @@ output "blob_filename" {
   description = "Name of uploaded Blob file"
   value       = azurerm_storage_blob.sc.name
 }
+
+output "blob_id" {
+  description = "Blob download link"
+  value       = azurerm_storage_blob.sc.id
+}

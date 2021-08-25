@@ -9,8 +9,8 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = azurerm_resource_group.vnet.name
   address_space       = [var.vnet_address_space]
 
+  for_each = var.subnet
   subnet {
-    for_each       = var.subnet
     name           = each.key
     address_prefix = each.value
   }

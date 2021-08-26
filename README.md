@@ -13,7 +13,7 @@
 ## Tasks
 
 - [x] Create an Azure VNet Module which can accept multiple subnets
-- [ ] Test with a `map` as an input variable
+- [x] Test with a `map` as an input variable
 - [ ] Add some meaningful module and root outputs
 - [x] Create an NSG with a for_each to set up multiple rules
 - [x] Dynamically assign the NSG to the Subnets created earlier

@@ -27,4 +27,8 @@ module "azure_vnet" {
   location            = "East US"
   resource_group_name = "steevaavoo-rg"
   vnet_name           = "steevaavoo-vnet"
+  # subnet variable defaults to 3 - override here if desired
+  # subnet = {
+  #   "subnet1" = "10.0.1.0/24"
+  # }
 }

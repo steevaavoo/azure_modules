@@ -31,25 +31,28 @@ variable "subnet" {
 
 variable "nsg_rules" {
   type = list(any)
-  default = [{
-    name                   = "rule1"
-    priority               = 100
-    direction              = "Inbound"
-    access                 = "Allow"
-    protocol               = "Tcp"
-    source_port_range      = "*"
-    destination_port_range = "443"
-    source_address_prefix  = "*"
-    destination_address_prefix = "*" },
+  default = [
     {
-      name                   = "rule2"
-      priority               = 200
-      direction              = "Inbound"
-      access                 = "Allow"
-      protocol               = "Tcp"
-      source_port_range      = "*"
-      destination_port_range = "587"
-      source_address_prefix  = "*"
-    destination_address_prefix = "*" }
+      name                       = "rule1"
+      priority                   = 100
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "443"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+    },
+    {
+      name                       = "rule2"
+      priority                   = 200
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "587"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+    }
   ]
 }

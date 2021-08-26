@@ -7,7 +7,7 @@ resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
   location            = azurerm_resource_group.vnet.location
   resource_group_name = azurerm_resource_group.vnet.name
-  address_space       = [var.vnet_address_space]
+  address_space       = var.vnet_address_space
 }
 
 resource "azurerm_subnet" "vnet" {

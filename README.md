@@ -12,4 +12,6 @@
 
 ## Tasks
 
-1. Create an Azure VNet Module which can accept multiple subnets
+- [x] Create an Azure VNet Module which can accept multiple subnets
+- [ ] Test with a `map` as an input variable
+- [ ] Add some meaningful module and root outputs

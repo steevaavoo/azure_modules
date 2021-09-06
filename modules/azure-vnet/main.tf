@@ -10,8 +10,18 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = var.vnet_address_space
 }
 
+# Standard subnets - no NSG association
 resource "azurerm_subnet" "vnet" {
-  for_each             = var.subnet
+  for_each             = var.subnets
+  name                 = each.key
+  resource_group_name  = azurerm_resource_group.vnet.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = [each.value]
+}
+
+# NSG-associated subnets
+resource "azurerm_subnet" "vnet_nsg" {
+  for_each             = var.nsg_enabled_subnets
   name                 = each.key
   resource_group_name  = azurerm_resource_group.vnet.name
   virtual_network_name = azurerm_virtual_network.vnet.name
@@ -47,7 +57,7 @@ resource "azurerm_network_security_group" "vnet" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "vnet" {
-  for_each                  = azurerm_subnet.vnet
+  for_each                  = azurerm_subnet.vnet_nsg
   subnet_id                 = each.value["id"]
   network_security_group_id = azurerm_network_security_group.vnet.id
 }

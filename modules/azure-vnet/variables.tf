@@ -29,6 +29,20 @@ variable "subnet" {
   }
 }
 
+variable "subnets" {
+  type = map(string)
+  default = {
+    "subnet1" = {
+      address_prefixes = "10.0.1.0/24"
+      enable_nsg       = false
+    },
+    "subnet1" = {
+      address_prefixes = "10.0.1.0/24"
+      enable_nsg       = false
+    }
+  }
+}
+
 variable "nsg_rules" {
   type = list(any)
   default = [

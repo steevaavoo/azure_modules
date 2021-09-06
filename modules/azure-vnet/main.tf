@@ -48,6 +48,7 @@ resource "azurerm_network_security_group" "vnet" {
 
 resource "azurerm_subnet_network_security_group_association" "vnet" {
   for_each                  = local.nsg_enabled_subnets
-  subnet_id                 = each.value["id"]
+  # subnet_id                 = each.value["id"]
+  subnet_id                 = azurerm_subnet.vnet[each.key].id
   network_security_group_id = azurerm_network_security_group.vnet.id
 }
